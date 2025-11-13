@@ -1,56 +1,24 @@
- HEAD
 const http = require("http");
+const port = 8080;
+const host = "0.0.0.0"; // Listen on all network interfaces
 
-const port = 8000;
+const server = http.createServer((req, res) => {
+  // Log the entire req object
+  console.log("Request object:", req);
 
-const htmlContent = `
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Page</title>
-  <meta charset="UTF-8" />
-</head>
-<body>
-  <h1>Hello, I am Jamshed</h1>
-  <h2>I am a computer science student</h2>
-  <p>This is a simple web page served using Node.js!</p>
-</body>
-</html>
-`;
+  // Log some useful parts separately
+  console.log("Method:", req.method);
+  console.log("URL:", req.url);
+  console.log("Headers:", req.headers);
 
-http.createServer(function(req, res) {
-  console.log(req);
   res.writeHead(200, { "Content-Type": "text/html" });
-  res.end(htmlContent);
-}).listen(port, function() {
-  console.log(`Server running at http://localhost:${port}/`);
+  res.end(`
+    <h1>Hello, world!</h1>
+    <p>This is a test change to show the update works!</p>
+  `);
 });
-// This is a small change for testing
 
-const http = require("http");
-
-const port = 8000;
-
-const htmlContent = `
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Page</title>
-  <meta charset="UTF-8" />
-</head>
-<body>
-  <h1>Hello, I am Jamshed</h1>
-  <h2>I am a computer science student</h2>
-  <p>This is a simple web page served using Node.js!</p>
-</body>
-</html>
-`;
-
-http.createServer(function(req, res) {
-  console.log(req);
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end(htmlContent);
-}).listen(port, function() {
-  console.log(`Server running at http://localhost:${port}/`);
+server.listen(port, host, () => {
+  console.log(`Server running at http://${host}:${port}/`);
 });
-0f7690cc9057ae2454d881c354d37db8930bbe86
+ptt
